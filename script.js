@@ -1,10 +1,14 @@
+
+
+var TOKEN = config.TOKEN;
+
 mapboxgl.accessToken =
-  "pk.eyJ1Ijoicm9nZXJnY2MiLCJhIjoiY2swNjBxZjdoMDB4OTNkbzdwZDRyd3Y2cCJ9.IAhPr1E2_-V8CqMc-zILDg";
+  TOKEN;
 var map = new mapboxgl.Map({
   container: "map", // container id
   style: "mapbox://styles/mapbox/dark-v10", //hosted style id
-  center: [-91.874, 42.76], // starting position
-  zoom: 12 // starting zoom
+  center: [-70.24637446871719, -18.015857040865768], // starting position
+  zoom: 15 // starting zoom
 });
 
 var draw = new MapboxDraw({
@@ -34,4 +38,11 @@ function updateArea(e) {
     if (e.type !== "draw.delete")
       alert("Use the draw tools to draw a polygon!");
   }
+
+  const collection_data= document.getElementById('collection-data');
+
+  collection_data.innerHTML=data;
+  console.log(data);
+  console.table(data);
+  console.table(data.features);
 }

@@ -1,5 +1,43 @@
-<div id="map"></div>
-<div class="calculation-box">
-  <p>Draw a polygon using the draw tools.</p>
-  <div id="calculated-area"></div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>polygon draw-</title>
+
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css" rel="stylesheet" />
+<link href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <script type='text/javascript' src='config.js'></script>
+  <div id="map"></div>
+ 
+  <div class="calculation-collection">
+    <p>Data Collection.</p>
+    <div id="collection-data"></div>
+
+    
+  </div>
+
+  <div class="calculation-box">
+    <p>Draw a polygon using the draw tools.</p>
+    <div id="calculated-area"></div>
+
+    
+  </div>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
+  <script src="https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.js"></script>
+
+
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
