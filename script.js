@@ -20,6 +20,58 @@ var draw = new MapboxDraw({
 });
 map.addControl(draw);
 
+
+map.on('load', function () {
+
+  map.addSource('zonas_pinto', {
+    type: 'geojson',
+     data: 'https://gist.githubusercontent.com/rogergcc/e19cc5885579b3c76219e12f8be13e46/raw/4fbf14688e02a877f72896635982305d5f7aebdd/zonaPinto.geojson'
+    // data: 'https://gist.githubusercontent.com/rogergcc/e19cc5885579b3c76219e12f8be13e46/raw/4fbf14688e02a877f72896635982305d5f7aebdd/zonaPinto.geojson'
+    
+  });
+
+  map.addLayer({
+    'id': 'park-boundary',
+    'type': 'fill',
+    'source': 'zonas_pinto',
+    'paint': {
+      'fill-color': '#D81B60',
+      
+      'fill-outline-color': '#D81B60',
+      'fill-opacity': 0.2
+    },
+    'filter': ['==', '$type', 'Polygon']
+  });
+
+  map.addLayer({
+    'id': 'route',
+    'type': 'line',
+    'source': 'zonas_pinto',
+    'layout': {
+    'line-join': 'round',
+    'line-cap': 'round'
+    },
+    'paint': {
+    'line-color': '#D81B60',
+    'line-width': 4
+    }
+    });
+    
+  map.addLayer({
+    'id': 'park-volcanoes',
+    'type': 'circle',
+    'source': 'zonas_pinto',
+    'paint': {
+      'circle-radius': 6,
+      'circle-color': '#B42222'
+    },
+    'filter': ['==', '$type', 'Point']
+  });
+
+
+});
+
+
 map.on("draw.create", updateArea);
 map.on("draw.delete", updateArea);
 map.on("draw.update", updateArea);
@@ -39,10 +91,11 @@ function updateArea(e) {
       alert("Use the draw tools to draw a polygon!");
   }
 
-  const collection_data= document.getElementById('collection-data');
+  const collection_data = document.getElementById('collection-data');
 
-  collection_data.innerHTML=data;
-  console.log(data);
-  console.table(data);
-  console.table(data.features);
+  var data = JSON.stringify(data)
+  collection_data.innerHTML = data;
+  //console.log(data);
+  
+  
 }
